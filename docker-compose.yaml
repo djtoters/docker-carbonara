@@ -75,6 +75,7 @@ services:
       - odoo_backend
     volumes:
       - ${ODOO_SRC}/odoo17:/opt/odoo
+      - ${ODOO_SRC}/odoo_addons:/opt/odoo/odoo_addons
       # - ${ODOO_SRC}/enterprise17:/opt/odoo/enterprise_addons
       - ./conf/17.0:/etc/odoo
       - ${ODOO_DATA_PATH}/odoo17:/root/.local/share/Odoo
