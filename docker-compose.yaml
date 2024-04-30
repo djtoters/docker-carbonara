@@ -65,7 +65,7 @@ services:
 
   odoo_runner_17:
     image: odoo_runner:17.0
-    command: python odoo-bin /etc/odoo/odoo.conf -u all
+    command: python odoo-bin
     build:
       context: ./build/17.0
     container_name: odoo_runner_17
