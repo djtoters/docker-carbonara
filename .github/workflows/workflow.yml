@@ -38,4 +38,4 @@ jobs:
         context: .
         file: ./build/17.0/Dockerfile
         push: true
-        tags: Maxime007XD/odoo:latest
+        tags: maximed007/odoo:latest
