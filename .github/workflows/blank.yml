@@ -1,0 +1,28 @@
+name: Build and Push Docker image
+
+on:
+  push:
+    branches:
+      - main  # Exécute le workflow sur les push dans la branche 'main'
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build . -t monuser/monrepo:latest
+
+    - name: Log in to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Push Docker image to DockerHub
+      run: docker push monuser/monrepo:latest
+
+    - name: Notify server
+      run: curl -X POST -d '{"event":"new_image"}' http://monserveur.com/webhook
