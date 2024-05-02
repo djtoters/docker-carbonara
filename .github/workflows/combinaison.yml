@@ -4,12 +4,13 @@ on:
     branches:
       - main
       - staging
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Install flake8
@@ -32,4 +33,9 @@ jobs:
           file: ./build/17.0/Dockerfile
           push: true
           tags: maximed007/odoo:latest
-      
+
+      - name: Auto Pull Request
+        if: github.ref == 'refs/heads/staging'
+        uses: diillson/auto-pull-request@v1.0.1
+        with:
+          destination_branch: "main"
