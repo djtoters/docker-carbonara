@@ -26,14 +26,27 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} 
-
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./build/17.0/Dockerfile
+          push: true
+          tags: maximed007/odoo:latest
   pull-request:
     runs-on: ubuntu-latest
     needs: deploy
     if: github.event_name == 'push' && github.ref == 'refs/heads/staging' && contains(github.event.head_commit.message, 'PR')
     steps:
-      - uses: actions/checkout@v3
-      - name: pull-request
+      - name: Check commit message for 'PR'
+        run: |
+          if [[ $(git log --format=%B -n 1 $GITHUB_SHA) =~ PR ]]; then
+            exit 0
+          else
+            exit 1
+          fi
+      - name: Create pull request
+        if: success()
         uses: diillson/auto-pull-request@v1.0.1
         with:
           destination_branch: "main"
