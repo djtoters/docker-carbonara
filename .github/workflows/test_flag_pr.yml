@@ -26,6 +26,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} 
+<<<<<<< HEAD
+
+=======
+>>>>>>> cac06ac55045890649b03f24782d7cc5a37817df
   pull-request:
     runs-on: ubuntu-latest
     needs: deploy
