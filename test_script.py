@@ -7,6 +7,7 @@ import subprocess
 
 # Commandes Docker à exécuter
 commands = [
+    "docker pull maximed007/odoo:latest",
     "sudo docker-compose down",
     "sudo docker-compose up -d",
 ]
