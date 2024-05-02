@@ -32,7 +32,4 @@ jobs:
           file: ./build/17.0/Dockerfile
           push: true
           tags: maximed007/odoo:latest
-      - name: pull-request
-        uses: diillson/auto-pull-request@v1.0.1
-        with:
-          destination_branch: "main"
+      
