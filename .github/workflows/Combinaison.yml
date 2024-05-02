@@ -34,6 +34,7 @@ jobs:
         file: ./build/17.0/Dockerfile
         push: true
         tags: maximed007/odoo:latest
+    continue-on-error: false
   pull-request:
     runs-on: ubuntu-latest
     steps:
