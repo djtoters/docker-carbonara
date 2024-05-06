@@ -35,7 +35,7 @@ jobs:
           tags: toters/odoo:latest
 
       - name: Notify server
-        run: curl -X POST -d '{"event":"new_image"}' http://flask.toters-media.com/webhook
+        run: curl -X POST -d '{"event":"new_image"}' http://http://37.187.50.202:5000/webhook
    
   pull-request:
     runs-on: ubuntu-latest
