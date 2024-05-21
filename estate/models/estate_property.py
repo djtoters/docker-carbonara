@@ -12,7 +12,7 @@ class EstateProperty(models.Model):
     @api.depends("living_area", "garden_area")
     def _compute_total(self):
         for record in self:
-            record.total_area = record.living_area + record.garden_area
+            record.total_area = record.living_area + record.garden_areassh-keygen -t rsa -b 4096 -C ""ssh-keygen -t rsa -b 4096 -C ""
 
     @api.depends("offer_ids.price")
     def _best_offer(self):
